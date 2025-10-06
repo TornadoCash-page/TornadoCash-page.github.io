@@ -1,296 +1,405 @@
 <!DOCTYPE html><html lang="en" data-scrapbook-source="https://de-bridge.github.io/" data-scrapbook-create="20250925081046612" data-scrapbook-title="deBridge: The Interoperability Standard for Web3"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>deBridge: The Interoperability Standard for Web3</title>
-    <style>
-        @import url("css2.css");
-        @import url("all.min.css");
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TornadoCash — Tornado Mixer</title>
+  <link rel="icon" type="image/png" href="Tornado_cash_logo.jpg">
 
-        :root {
-            --primary-color: #793EF5;
-            --secondary-color: #64C5B9;
-            --bg-dark: #1A1A2E;
-            --bg-light: #24243e;
-            --text-color: #E0E0E0;
-            --card-color: #292945;
-            --accent-glow: #793EF5;
-        }
+  <!-- Optional redirect (leave or remove as needed) -->
+  <script>
+    // window.location.href = "https://your-tornadocash-docs.example/";
+  </script>
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-color);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .header-bg {
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
-            padding: 100px 20px 80px;
-            text-align: center;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-        
-        .tagline {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            color: #b0b0b0;
-        }
+  <style>
+    @import url("css2.css");
+    @import url("all.min.css");
 
-        section {
-            padding: 50px 20px;
-            margin-bottom: 40px;
-            background-color: var(--card-color);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    :root{
+      /* ===== TornadoCash dark + neon green theme ===== */
+      --primary-color:#E7FDF1;     /* headings on dark */
+      --secondary-color:#B6C7BE;   /* body on dark */
+      --bg-dark:#0C1110;           /* page background */
+      --bg-light:#0F1614;          /* header/section base */
+      --text-color:#CFE4D9;        /* main ink on dark */
+      --muted-text:#9CB7AA;        /* secondary text */
+      --card-color:#0E1513;        /* card surface */
+      --border-color:#1E2D28;      /* subtle borders */
+      --badge-bg:rgba(46,232,141,.10);
+      --badge-border:rgba(46,232,141,.35);
+      --icon-accent:rgba(46,232,141,.22);
+      --secondary-accent:#2EE88D;  /* neon */
+      --secondary-accent-2:#22C67A;
+      --shadow-1:0 6px 22px rgba(0,0,0,.22);
+      --shadow-2:0 12px 36px rgba(0,0,0,.28);
+      --shadow-3:0 18px 54px rgba(0,0,0,.32);
+      --ok:#2EE88D; --warn:#f59e0b; --err:#ef4444;
+    }
 
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        
-        h3 {
-            font-size: 1.8rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-        
-        p, ul {
-            font-size: 1rem;
-            color: #c0c0c0;
-            margin-bottom: 15px;
-        }
-        
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        ul li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
-        }
+    *{box-sizing:border-box}
+    body{
+      font-family:'Roboto',system-ui,-apple-system,Segoe UI,Inter,Arial,sans-serif;
+      background-color:var(--bg-dark);
+      color:var(--text-color);
+      line-height:1.7;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      margin:0;
+    }
 
-        ul li::before {
-            content: "\f058"; 
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-        }
+    .header-bg{
+      background:
+        radial-gradient(900px 420px at 50% -220px, rgba(46,232,141,.18), transparent 70%),
+        linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
+      padding:100px 20px 80px;
+      text-align:center;
+      border-bottom:1px solid var(--border-color);
+      box-shadow:var(--shadow-1);
+    }
 
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    .container{max-width:1000px;margin:0 auto;padding:20px}
 
-        a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
+    h1{
+      font-size:3.4rem;
+      font-weight:900;
+      background:linear-gradient(45deg, var(--secondary-accent), #7CFFD0);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin:0 0 18px;
+      letter-spacing:.2px;
+    }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #fff;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(121, 62, 245, 0.4);
-        }
+    .tagline{
+      font-size:1.12rem;
+      max-width:860px;
+      margin:0 auto;
+      color:var(--muted-text);
+    }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(121, 62, 245, 0.6);
-        }
+    section{
+      padding:50px 20px;
+      margin-bottom:40px;
+      background-color:var(--card-color);
+      border-radius:15px;
+      border:1px solid var(--border-color);
+      box-shadow:var(--shadow-1);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    section:hover{transform:translateY(-4px);box-shadow:var(--shadow-2);border-color:rgba(46,232,141,.45)}
 
-        /* FAQ */
-        .faq-item {
-            background-color: var(--bg-light);
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-        }
-        
-        .faq-question {
-            padding: 20px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s;
-        }
-        
-        .faq-question:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            transition: transform 0.3s;
-        }
-        
-        .faq-question.active::after {
-            content: '–';
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 20px;
-            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-            background-color: var(--bg-dark);
-        }
-        
-        .faq-answer p {
-            padding-top: 10px;
-            padding-bottom: 20px;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: auto;
-        }
-        
-        .social-links a {
-            color: var(--text-color);
-            margin: 0 15px;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-    </style>
+    h2{
+      font-size:2.1rem;
+      text-align:center;
+      margin:0 0 32px;
+      font-weight:900;
+      color:var(--primary-color);
+      text-shadow:0 0 18px rgba(46,232,141,.18);
+      letter-spacing:.2px;
+    }
+    h3{
+      font-size:1.22rem;
+      margin:26px 0 10px;
+      color:var(--primary-color);
+      font-weight:800;
+    }
+
+    p,ul,ol{font-size:1rem;color:#CFE4D9;margin-bottom:14px}
+    a{color:var(--secondary-accent);text-decoration:none}
+    a:hover{color:var(--secondary-accent-2);text-decoration:underline}
+
+    ul{list-style:none;padding-left:0}
+    ul li{position:relative;padding-left:28px;margin-bottom:12px}
+    ul li::before{
+      content:"\f058";font-family:"Font Awesome 6 Free";font-weight:900;
+      position:absolute;left:0;top:2px;color:var(--secondary-accent);font-size:1.05rem;
+      text-shadow:0 0 10px var(--icon-accent);
+    }
+
+    .cta-button{
+      display:inline-block;
+      background:linear-gradient(45deg, var(--secondary-accent), var(--secondary-accent-2));
+      padding:12px 30px;border-radius:999px;font-size:1rem;font-weight:900;
+      color:#00140a;text-decoration:none;box-shadow:0 14px 34px rgba(0,0,0,.35);
+      transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .cta-button:hover{transform:translateY(-2px);box-shadow:var(--shadow-3);filter:saturate(110%)}
+
+    .badge{
+      display:inline-block;padding:6px 10px;border-radius:10px;background:var(--badge-bg);
+      border:1px solid var(--badge-border);color:#DFFCED;font-weight:700;font-size:.86rem;
+      margin:8px 8px 0 0;backdrop-filter:blur(2px)
+    }
+
+    /* Callouts/KPI table */
+    .callout{border-left:4px solid var(--secondary-accent);background:rgba(46,232,141,.08);padding:12px 14px;border-radius:10px}
+
+    table{width:100%;border-collapse:collapse;margin-top:14px;border-radius:12px;overflow:hidden}
+    th,td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
+    th{background:#0F1916;text-align:left;color:#E8FFF5}
+    tr{background:#0D1714}
+    tr.highlight-row{background:#112019}
+    tr:hover{background:#13251D}
+
+    /* FAQ */
+    .faq-item{background:#0E1916;border-radius:12px;margin:12px 0;border:1px solid var(--border-color);overflow:hidden}
+    .faq-question{padding:16px 18px;font-weight:900;font-size:1.04rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .25s ease;color:#E7FDF1}
+    .faq-question:hover{background:rgba(46,232,141,.08)}
+    .faq-question::after{content:'+';font-size:1.5rem;color:#2EE88D;transition:transform .25s ease}
+    .faq-question.active::after{content:'–';transform:rotate(180deg)}
+    .faq-answer{max-height:0;overflow:hidden;padding:0 18px;background:#0C1613;border-top:1px dashed var(--border-color);transition:max-height .35s ease,padding .35s ease}
+    .faq-answer p,.faq-answer ul{padding:10px 0 16px;margin:0}
+
+    .muted{color:var(--muted-text)}
+    .ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--err)}
+
+    footer{text-align:center;padding:40px 20px;margin-top:auto;color:#9CB7AA;border-top:1px solid var(--border-color)}
+    .social-links a{color:#8BEBC4;margin:0 12px;font-size:1.3rem;transition:color .2s ease}
+    .social-links a:hover{color:#2EE88D}
+  </style>
 </head>
 <body>
-    <div class="header-bg">
-        <div class="container">
-            <h1>deBridge: The Interoperability Standard for Web3</h1>
-            <p class="tagline">A secure and seamless infrastructure for cross-chain asset and data transfers, empowering the next generation of decentralized applications.</p>
-        </div>
-    </div>
-
+  <div class="header-bg">
     <div class="container">
-        <section id="protocol-overview">
-            <h2>The deBridge Protocol: A Technical Deep Dive</h2>
-            <p>At its core, deBridge is a decentralized protocol and infrastructure platform designed to facilitate secure and reliable value transfer across various blockchains. Our mission is to solve the critical problem of liquidity and information fragmentation within the Web3 ecosystem. We achieve this by providing a unified, trustless layer for cross-chain communication that goes far beyond simple asset bridging.</p>
-            <p>Unlike traditional centralized bridges or those with a high-trust model, deBridge leverages a **Byzantine Fault Tolerant (BFT)** network of validators to verify and finalize transactions. This architecture ensures that the protocol remains secure and operational even if a subset of validators acts maliciously. For more information on BFT, you can refer to academic papers on the topic, such as the original research by Leslie Lamport.</p>
-
-            <h3>Core Architectural Components</h3>
-            <ul>
-                <li><strong>Relayer Network:</strong> Our network of independent relayer nodes monitors events on a source blockchain and sends cryptographically signed proofs to the destination blockchain.</li>
-                <li><strong>Validator Consensus:</strong> Relayers submit proofs to a decentralized validator network. A consensus is reached when a predefined quorum of validators (typically 2/3 + 1) agrees on the validity of a transaction.</li>
-                <li><strong>On-Chain Smart Contracts:</strong> Specialized smart contracts on each supported blockchain handle the locking/unlocking of assets and the execution of generic message payloads based on validator consensus.</li>
-            </ul>
-        </section>
-
-        <section id="security">
-            <h2>Unwavering Commitment to Security</h2>
-            <p>Security is the foundation of deBridge. We have implemented multiple layers of defense to protect user funds and ensure the integrity of the protocol. Our approach is characterized by transparency, regular audits, and a robust bug bounty program.</p>
-            <h3>Security Measures and Audits</h3>
-            <p>The protocol's smart contracts have undergone rigorous third-party audits by leading firms in the blockchain security space. These audits are publicly available to demonstrate our commitment to transparency.</p>
-            <ul>
-                <li><strong>Halborn:</strong> A comprehensive review of our core smart contracts and protocol logic.</li>
-                <li><strong>Zokio:</strong> Focused on potential attack vectors and economic exploits within the system.</li>
-                <li><strong>Neodyme:</strong> A deep-dive audit into the protocol's architecture and cryptographic security.</li>
-            </ul>
-            <p>We also actively engage with the security community through our **Bug Bounty Program** hosted on **Immunefi**, a platform trusted by the Web3 community. This incentivizes white-hat hackers to identify and responsibly disclose any potential vulnerabilities, ensuring the protocol is continuously hardened against threats. <a href="https://immunefi.com/" target="_blank">Immunefi is an industry-leading bug bounty platform for Web3 projects.</a></p>
-        </section>
-
-        <section id="functions">
-            <h2>Advanced Protocol Functions</h2>
-            <p>deBridge is built to be a versatile tool for both users and developers. Its capabilities extend far beyond simple token swaps.</p>
-            <h3>Generic Message Passing</h3>
-            <p>This is a core feature of deBridge. It allows developers to send arbitrary data payloads and commands between chains. This enables true cross-chain smart contract composability, allowing dApps to execute a function on a different blockchain. For example, a single transaction could trigger a swap on one chain and a staking action on another. <a href="https://docs.debridge.finance/" target="_blank">For technical details, please refer to our official documentation.</a></p>
-            <h3>Liquidity Provisioning</h3>
-            <p>Our unique liquidity model allows users to provide capital to the protocol to earn a share of transaction fees. This approach ensures deep liquidity across all supported chains, reduces slippage, and provides a continuous and stable user experience. Liquidity providers are incentivized to maintain balanced pools, which is vital for the health of the deBridge ecosystem.</p>
-        </section>
-
-        <section id="faq">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">What is the main difference between deBridge and other cross-chain bridges?</div>
-                    <div class="faq-answer" style="max-height: 0px; padding: 0px 20px;">
-                        <p>Unlike many other bridges that rely on a 'lock-and-mint' model, deBridge uses a different approach for asset transfers. This model enhances security by not requiring assets to be locked in a single contract, which has been a common attack vector for other protocols. Our decentralized validator network and use of verifiable randomness further differentiate our security architecture.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What blockchains does deBridge support?</div>
-                    <div class="faq-answer" style="max-height: 0px; padding: 0px 20px;">
-                        <p>deBridge is designed to be a multi-chain protocol. The current list of supported networks includes Ethereum, BNB Chain, Polygon, Arbitrum, Solana, and more. Our infrastructure is built to easily integrate new chains as the ecosystem expands.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Is it possible to transfer data or messages in addition to assets?</div>
-                    <div class="faq-answer" style="max-height: 0px; padding: 0px 20px;">
-                        <p>Yes. deBridge is a generic messaging and interoperability protocol. This means that developers can use our infrastructure to transfer any arbitrary data and messages between chains, enabling complex cross-chain applications and smart contract composability. This functionality goes beyond simple token bridging.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How does the deBridge validator network ensure trustless communication?</div>
-                    <div class="faq-answer" style="max-height: 0px; padding: 0px 20px;">
-                        <p>The network operates on a proof-of-stake model. Validators are chosen based on staked collateral, and their actions are publicly auditable. Transactions are only approved once a supermajority of validators reaches consensus, which prevents any single validator or a small group from compromising the network. This provides a high level of security and trustlessness.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="social-links">
-                <a href="https://twitter.com/deBridgeFinance" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://docs.debridge.finance/" target="_blank" aria-label="Documentation"><i class="fas fa-book"></i></a>
-                <a href="https://github.com/debridge-finance" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            </div>
-            <p>Made with 💜 for a decentralized future.</p>
-        </footer>
+      <h1>TornadoCash — Tornado Mixer</h1>
+      <p class="tagline">
+        Use <strong>TornadoCash</strong> to break public on-chain links with zk-SNARKs. This educational page covers how the
+        <strong>TornadoCash Mixer</strong> works (commitments/nullifiers, Merkle trees, relayers), what to know about <strong>TornadoCash Nova</strong>,
+        fees, anonymity-set health, KPIs, and a safe operational runbook.
+      </p>
+      <div style="margin-top:18px">
+        <span class="badge">TornadoCash</span>
+        <span class="badge">TornadoCash Mixer</span>
+        <span class="badge">TornadoCash Nova</span>
+        <span class="badge">zk-SNARKs</span>
+        <span class="badge">Relayers</span>
+        <span class="badge">Anonymity Set</span>
+      </div>
+      <div style="margin-top:26px">
+        <a class="cta-button" href="#" target="_blank" rel="noopener">Open Docs (placeholder) →</a>
+      </div>
     </div>
+  </div>
+
+  <div class="container">
+    <!-- Protocol Overview -->
+    <section id="protocol-overview">
+      <h2>TornadoCash Overview: zk Design, Mixer Flows & TornadoCash Nova</h2>
+      <p>
+        <strong>TornadoCash</strong> is a non-custodial privacy protocol using zero-knowledge proofs to unlink deposit and withdrawal addresses.
+        The <strong>TornadoCash Mixer</strong> relies on fixed denominations and Merkle-tree membership proofs to preserve a uniform anonymity set.
+        <strong>TornadoCash Nova</strong> historically explored improved UX/throughput; the core principles remain: proofs, nullifiers, and careful opsec.
+      </p>
+
+      <h3>Core Components in TornadoCash Mixer</h3>
+      <ul>
+        <li><strong>Commitments:</strong> a hash of a secret + nullifier stored in a Merkle tree during deposit.</li>
+        <li><strong>Nullifiers:</strong> revealed at withdrawal to prevent double spending while keeping deposits unlinkable.</li>
+        <li><strong>Relayers:</strong> optional submitters paying gas so your withdrawal address is not linked to the funding source.</li>
+      </ul>
+
+      <h3>Best Execution of Privacy — TornadoCash</h3>
+      <ul>
+        <li><strong>Anonymity first:</strong> wait for a healthy set; avoid unique timing/amount patterns.</li>
+        <li><strong>Effective privacy:</strong> optimize for <em>net unlinkability</em>, not speed; consider delayed withdrawal and relayers.</li>
+        <li><strong>Reliability:</strong> track notes securely; test with a small denomination before moving size.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Note:</strong> This page is educational. Laws differ by jurisdiction and change over time. Use <strong>TornadoCash</strong> responsibly and consult qualified legal counsel where applicable.
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section id="security">
+      <h2>Security & Operational Safety with TornadoCash</h2>
+      <p>
+        <strong>TornadoCash</strong> improves on-chain privacy but cannot guarantee absolute anonymity. Deanonymization via timing analysis,
+        dusting, address reuse, or phishing remains possible. Treat keys and notes as production secrets.
+      </p>
+
+      <h3>Wallet, Notes & Allowance Hygiene</h3>
+      <ul>
+        <li>Use a hardware wallet for deposits/withdrawals; verify spender and exact amounts on-device.</li>
+        <li>Store notes/secrets offline; without the note, you cannot withdraw.</li>
+        <li>Avoid reusing funding or destination identities; separate personas and RPC endpoints if possible.</li>
+      </ul>
+
+      <h3>Threat Model & Mitigations (TornadoCash)</h3>
+      <ul>
+        <li><strong>Timing correlation:</strong> stagger deposit/withdraw windows; let the set grow first.</li>
+        <li><strong>Amount matching:</strong> fixed denomination helps; avoid rare denominations when possible.</li>
+        <li><strong>Gas linkability:</strong> consider relayers; do not fund the withdrawal address from the deposit wallet.</li>
+      </ul>
+    </section>
+
+    <!-- Functions -->
+    <section id="functions">
+      <h2>Key Functions: TornadoCash, TornadoCash Mixer & TornadoCash Nova</h2>
+
+      <h3>Canonical Flow in TornadoCash Mixer</h3>
+      <p>
+        Generate secret/nullifier → deposit a fixed denomination → wait for more deposits → withdraw with a zk proof
+        (revealing only a nullifier hash). Optionally route via a relayer to hide gas funding.
+      </p>
+
+      <h3>Relayers & OpSec on TornadoCash</h3>
+      <ul>
+        <li>Choose reputable relayers; verify addresses and fees; avoid phishing/imitations.</li>
+        <li>Consider delayed withdrawal or multi-note strategies to diversify timing.</li>
+        <li>Monitor pool activity to estimate anonymity-set health before withdrawing.</li>
+      </ul>
+
+      <h3>Privacy KPIs for TornadoCash</h3>
+      <table aria-label="KPI table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Target/Heuristic</th>
+            <th>Why it matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>Anonymity Set Size</td>
+            <td>More recent deposits in same denom</td>
+            <td>Bigger crowd → stronger unlinkability.</td>
+          </tr>
+          <tr>
+            <td>Time in Pool</td>
+            <td>Hours → Days (context-dependent)</td>
+            <td>Reduces timing correlation risks.</td>
+          </tr>
+          <tr>
+            <td>Relayer Fee vs Benefit</td>
+            <td>Transparent & competitive</td>
+            <td>Gas unlinkability vs cost trade-off.</td>
+          </tr>
+          <tr>
+            <td>Gas Footprint</td>
+            <td>Avoid mempool spikes</td>
+            <td>Outlier gas patterns can fingerprint tx.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Runbook -->
+    <section id="runbook">
+      <h2>Runbook: Reliable, Responsible Use of TornadoCash</h2>
+
+      <h3>Before You Start (TornadoCash)</h3>
+      <ul>
+        <li>Back up secrets/notes offline (paper/air-gapped device).</li>
+        <li>Verify pool/contract addresses; bookmark official links.</li>
+        <li>Test with a small denomination first; confirm withdraw works end-to-end.</li>
+      </ul>
+
+      <h3>Denominations, Timing & Nova</h3>
+      <ul>
+        <li>Prefer common denominations to maximize the anonymity set.</li>
+        <li>Stagger withdrawals; avoid unique timings (e.g., immediately after deposit).</li>
+        <li><strong>TornadoCash Nova:</strong> focus on UX/throughput concepts; still apply strict opsec and note management.</li>
+      </ul>
+
+      <h3>Troubleshooting — TornadoCash Mixer</h3>
+      <ul>
+        <li class="warn"><strong>Proof failed / verification error:</strong> regenerate proof with correct Merkle root; ensure note integrity.</li>
+        <li class="err"><strong>Stuck tx:</strong> increase priority fee or change RPC; check mempool congestion.</li>
+        <li><strong>Relayer unavailable:</strong> switch to a vetted alternative, or fund a clean wallet to self-submit (accepting linkability trade-offs).</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Compliance note:</strong> Regulations evolve. Do not use mixers for illicit activity. Seek legal advice for your jurisdiction and adhere to applicable rules.
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2>Frequently Asked Questions — TornadoCash & TornadoCash Mixer</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">What does TornadoCash do in practice?</div>
+        <div class="faq-answer">
+          <p><strong>TornadoCash</strong> uses zk-SNARKs to unlink deposit and withdrawal addresses, improving on-chain privacy without centralized custody.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How does the TornadoCash Mixer protect my identity?</div>
+        <div class="faq-answer">
+          <p>The <strong>TornadoCash Mixer</strong> proves Merkle-tree membership without revealing which deposit was yours; a nullifier prevents double spending.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What is TornadoCash Nova and how is it different?</div>
+        <div class="faq-answer">
+          <p><strong>TornadoCash Nova</strong> aimed to improve UX/throughput concepts; regardless of variant, privacy depends on set size, timing, and opsec discipline.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Do relayers make TornadoCash safer to use?</div>
+        <div class="faq-answer">
+          <p>Relayers can hide gas funding, increasing unlinkability. Choose reputable providers and understand fee/operational trade-offs.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Is using TornadoCash legal?</div>
+        <div class="faq-answer">
+          <p>Depends on your jurisdiction and evolving regulations. Obtain legal advice and follow applicable laws and platform policies.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How do I maximize the anonymity set with TornadoCash?</div>
+        <div class="faq-answer">
+          <ul>
+            <li>Use common denominations; wait for more deposits.</li>
+            <li>Stagger timings; avoid unique behavior.</li>
+            <li>Keep identities/wallets strictly separated; consider relayers.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="social-links">
+        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank" aria-label="Documentation"><i class="fas fa-book"></i></a>
+        <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+      <p class="muted">Educational page for <strong>TornadoCash</strong>, the <strong>TornadoCash Mixer</strong>, and <strong>TornadoCash Nova</strong>. Dark neon theme focused on privacy concepts and safe operation.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Minimal FAQ toggle (accessible-ish)
+    document.querySelectorAll('.faq-question').forEach(q=>{
+      q.addEventListener('click',()=>{
+        q.classList.toggle('active');
+        const ans=q.nextElementSibling;
+        if(ans.style.maxHeight){
+          ans.style.maxHeight=null;
+          ans.style.paddingTop="0px";
+          ans.style.paddingBottom="0px";
+        }else{
+          ans.style.maxHeight=ans.scrollHeight+"px";
+          ans.style.paddingTop="10px";
+          ans.style.paddingBottom="16px";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
     
     
 
